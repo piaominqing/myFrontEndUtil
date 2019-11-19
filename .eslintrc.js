@@ -9,7 +9,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  // extends: ['tui/es6', 'plugin:prettier/recommended'],
+  extends: ['tui/es6', 'plugin:prettier/recommended'],
   plugins: [],
   // add your custom rules here
   rules: {

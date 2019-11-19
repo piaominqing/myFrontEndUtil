@@ -1,5 +1,3 @@
-//@fibonacciArray
-//@getFibonacci
 export class Fibonacci {
   constructor(num) {
     this.fibonacciArray = [];
