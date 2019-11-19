@@ -1,5 +1,5 @@
 import {WeakMapStack} from './weakMapStack'
-
+// stack 使用  十进制->任意进制
 export function decimalToBinary(decNumber, base){
   const remStack = new WeakMapStack();
   const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -15,7 +15,7 @@ export function decimalToBinary(decNumber, base){
     number = Math.floor(number / base);
   }
   while(!remStack.isEmpty()){
-    baseString += digits[remStack.pop()];
+    baseString += digits[remStack.pop()];//根据String 对象的属性取值
   }
 
   return baseString;
