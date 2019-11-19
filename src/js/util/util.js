@@ -1,4 +1,4 @@
-import {WeakMapStack} from './weakMapStack'
+import {WeakMapStack} from './stack/weakMapStack'
 // stack 使用  十进制->任意进制
 export function decimalToBinary(decNumber, base){
   const remStack = new WeakMapStack();

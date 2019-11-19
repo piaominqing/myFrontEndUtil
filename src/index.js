@@ -1,6 +1,6 @@
 import '../assets/css/common.css';
 import '../assets/css/todolist.css';
-import {decimalToBinary} from './js/util';
+import {decimalToBinary} from './js/util/util';
 
 
 export class Todolist {
