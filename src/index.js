@@ -1,27 +1,16 @@
 import '../assets/css/common.css';
 import '../assets/css/todolist.css';
 import {Deque} from './js/util/queue/deque';
+import { hotPotato } from './js/util/util';
 
 export class Todolist {
   constructor() {
     this.innerText = '';
 
-    const deque = new Deque();
-    console.log(deque.isImpty());
-    console.log(deque.toString());
-    deque.addBack('John');
-    deque.addBack('Jack');
-    console.log(deque.toString());
-    deque.addBack('Camila');
-    console.log(deque.toString());
-    console.log(deque.size());
-    console.log(deque.isImpty());
-    deque.removeFront();
-    console.log(deque.toString());
-    deque.removeBack();
-    console.log(deque.toString());
-    deque.addFront('John');
-    console.log(deque.toString());
+    const names = ['John','Jack','Camila','Ingrid','Carl'];
+    const result = hotPotato(names, 7);
+    result.eliminated.forEach(name=>{console.log(`${name}在击鼓传花游戏中淘汰。`)});
+    console.log(`胜利者：${result.winner}`);
     document.querySelector('#todolist').innerText = this.innerText;
   }
 }

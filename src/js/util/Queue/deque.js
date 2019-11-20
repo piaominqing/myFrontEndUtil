@@ -1,3 +1,5 @@
+//双端队列
+//后进先出，先进先出 queue和stack结合
 export class Deque {
   constructor() {
     this.count = 0;
