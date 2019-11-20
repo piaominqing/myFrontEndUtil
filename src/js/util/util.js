@@ -59,7 +59,7 @@ export function palindromeChecker(aString){
     return false;
   }
   const deque = new Deque();
-  //去取空格转换为大写
+  //去除空格转换为小写
   const lowerString = aString.toLocaleLowerCase().split(' ').join('');
   let isEqual = true;
   let firstChar, lastChar;
