@@ -1,5 +1,6 @@
 import {WeakMapStack} from './stack/weakMapStack';
 import { Queue } from './queue/queue';
+import { Deque } from './queue/deque';
 
 // stack 使用  十进制->任意进制
 export function decimalToBinary(decNumber, base) {
@@ -48,4 +49,32 @@ export function hotPotato(elementList, num){
     eliminated: elimitatedList,
     winner: queue.dequeue()
   }
+}
+
+//回文（madam等）检查器 
+//使用双端队列实现
+export function palindromeChecker(aString){
+  //undefined和null，'' 直接return false
+  if(aString === undefined || aString === null||(aString !== null && aString.length === 0)){
+    return false;
+  }
+  const deque = new Deque();
+  //去取空格转换为大写
+  const lowerString = aString.toLocaleLowerCase().split(' ').join('');
+  let isEqual = true;
+  let firstChar, lastChar;
+  //把每个字符按顺序加到双端队列中
+  for(let i = 0; i < lowerString.length; i++){
+    deque.addBack(lowerString.charAt(i));
+  }
+  //循环deque至 size 为 1 或 0 且 之前都是相同
+  //每次取前后端一个字符判断是否相同
+  while(deque.size() > 1 && isEqual){
+    firstChar = deque.removeFront();
+    lastChar = deque.removeBack();
+    if(firstChar !== lastChar){
+      isEqual = false;
+    }
+  }
+  return isEqual;
 }
