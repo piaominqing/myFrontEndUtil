@@ -1,16 +1,17 @@
 import '../assets/css/common.css';
 import '../assets/css/todolist.css';
-import {Deque} from './js/util/queue/deque';
-import { hotPotato } from './js/util/util';
+import {LinkedList} from './js/util/linkedList/linkedList';
 
 export class Todolist {
   constructor() {
     this.innerText = '';
 
-    const names = ['John','Jack','Camila','Ingrid','Carl'];
-    const result = hotPotato(names, 7);
-    result.eliminated.forEach(name=>{console.log(`${name}在击鼓传花游戏中淘汰。`)});
-    console.log(`胜利者：${result.winner}`);
+    const linkedList = new LinkedList();
+    linkedList.push(15);
+    linkedList.push(10);
+    console.log(linkedList.head);
+    console.log(linkedList.head.next);
+
     document.querySelector('#todolist').innerText = this.innerText;
   }
 }

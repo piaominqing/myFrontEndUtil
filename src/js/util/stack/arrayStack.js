@@ -1,4 +1,4 @@
-// 基于数组的栈
+// 基于数组的栈（后进先出）
 // 弊端：可以任意修改内部属性
 export class arrayStack {
   constructor() {

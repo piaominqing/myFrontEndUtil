@@ -1,4 +1,4 @@
-// 基于JavaScript对象的栈
+// 基于JavaScript对象的栈（后进先出）
 // 弊端：与数组相同，可任意修改属性
 export class ObjectStack {
   constructor() {

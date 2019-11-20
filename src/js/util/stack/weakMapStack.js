@@ -1,38 +1,49 @@
-//基于WeakMap创建栈
-//弊端：可读性降低
+// 基于WeakMap创建栈（后进先出）
+// 弊端：可读性降低
 const items = new WeakMap();
 export class WeakMapStack {
-  constructor () {
+  constructor() {
     items.set(this, []);
   }
 
-  push (element){
+  push(element) {
     const s = items.get(this);
     s.push(element);
   }
-  //栈size
-  size () {
+
+  // 栈size
+  size() {
     const s = items.get(this);
-    return s.length
+
+    return s.length;
   }
-  //检查栈是否为空
-  isEmpty () {
+
+  // 检查栈是否为空
+  isEmpty() {
     const s = items.get(this);
+
     return !s.length;
   }
-  pop(){
+
+  pop() {
     const s = items.get(this);
+
     return s.pop();
   }
-  peek(){
+
+  peek() {
     const s = items.get(this);
-    return s[s.length -1];
+
+    return s[s.length - 1];
   }
-  clear(){
+
+  clear() {
     items.set(this, []);
   }
-  toString(){
+
+  toString() {
     const s = items.get(this);
+
     return s.toString();
   }
 }
