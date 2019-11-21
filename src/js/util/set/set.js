@@ -1,3 +1,4 @@
+// 集合 {value：value}
 export class Set {
   constructor() {
     this.items = {};

@@ -14,3 +14,18 @@
 export function defaultEquals(a, b) {
   return a === b;
 }
+/**
+ * defaultToString
+ * @param {any} item 需要toString的数据
+ * @returns {string}
+ */
+export function defaultToString(item) {
+  if (item === null) {
+    return 'NULL';
+  }
+  if (typeof item === 'string' || item instanceof String) {
+    return `${item}`;
+  }
+
+  return item.toString();
+}
