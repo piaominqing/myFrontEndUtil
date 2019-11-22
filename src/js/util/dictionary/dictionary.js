@@ -1,5 +1,5 @@
 import {defaultToString} from '../nativeUtil';
-import {ValuePair} from '../valuePair';
+import {ValuePair} from './valuePair';
 // 字典 {key：value}
 export class Dictionary {
   constructor(toStrFn = defaultToString) {
@@ -39,7 +39,7 @@ export class Dictionary {
   get(key) {
     const valuePair = this.table[this.toStrFn(key)];
 
-    return valuePair === null ? valuePair : this.table[this.toStrFn(key)].value;
+    return valuePair ? this.table[this.toStrFn(key)].value : valuePair;
   }
 
   // 返回字典中所有valuePair
@@ -50,6 +50,10 @@ export class Dictionary {
   // 所有原始键名
   keys() {
     return this.keyValues().map(valuePair => valuePair.key);
+  }
+
+  values() {
+    return this.keyValues().map(valuePair => valuePair.value);
   }
 
   // 迭代数据
