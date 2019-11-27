@@ -1,19 +1,5 @@
-import {defaultEquals} from '../nativeUtil';
+import {defaultEquals, defaultCompare, Compare} from '../nativeUtil';
 import {LinkedList} from './linkedList';
-
-const Compare = {
-  LESS_THAN: -1,
-  BIGGER_THAN: 1
-};
-
-// eslint-disable-next-line require-jsdoc
-function defaultCompare(a, b) {
-  if (a === b) {
-    return 0;
-  }
-
-  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
-}
 
 export class SortedLinkedList extends LinkedList {
   constructor(equalsFn = defaultEquals, compareFn = defaultCompare) {
