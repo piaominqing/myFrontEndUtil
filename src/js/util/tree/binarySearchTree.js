@@ -124,40 +124,40 @@ export class BinarySearchTree {
     if (node === null) {
       return null;
     }
-    //当key 值 比 当前node的key值小时 向 node.left 查找
+    // 当key 值 比 当前node的key值小时 向 node.left 查找
     if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
       node.left = this.removeNode(node.left, key);
 
       return node;
     }
-    //当key 值 比 当前node的key值大时 向 node.right 查找
+    // 当key 值 比 当前node的key值大时 向 node.right 查找
     if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
       node.right = this.removeNode(node.right, key);
 
       return node;
     }
 
-    //当找到key 值时
-    //找到key 值的node  且下面没有子节点时 赋予null
+    // 当找到key 值时
+    // 找到key 值的node  且下面没有子节点时 赋予null
     if (node.left === null && node.right === null) {
       node = null;
 
       return node;
     }
-    //找到key 值的node  且left没有子节点时， 赋予右面的值
+    // 找到key 值的node  且left没有子节点时， 赋予右面的值
     if (node.left === null) {
       node = node.right;
 
       return node;
     }
-    //找到key 值的node  且right没有子节点时， 赋予左面的值
+    // 找到key 值的node  且right没有子节点时， 赋予左面的值
     if (node.right === null) {
       node = node.left;
 
       return node;
     }
 
-    //找到key 值的node  左侧右侧都有子节点时，赋予当前node的右面子节点中查找最小的node，且删除该最小的node
+    // 找到key 值的node  左侧右侧都有子节点时，赋予当前node的右面子节点中查找最小的node，且删除该最小的node
     const aux = this.minNode(node.right);
     node.key = aux.key;
     node.right = this.removeNode(node.right, aux.key);
