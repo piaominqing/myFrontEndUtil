@@ -49,6 +49,10 @@ export class RedBlackTree extends BinarySearchTree {
     return node;
   }
 
+  /**
+   *排序和染色
+   * @param {RedBlackNode} node RedBlackNode
+   */
   fixTreeProperties(node) {
     while (node && node.parent && node.parent.color.isRed() && node.color !== Colors.Black) {
       const parent = node.parent;
