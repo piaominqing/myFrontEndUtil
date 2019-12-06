@@ -2,6 +2,7 @@
 import {WeakMapStack} from './stack/weakMapStack';
 import {Queue} from './queue/queue';
 import {Deque} from './queue/deque';
+import {defaultCompare, Compare} from './nativeUtil';
 
 /**
  * stack 使用  十进制->任意进制
@@ -120,6 +121,12 @@ export function fibonacci(n) {
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
+export function swap(array, a, b) {
+  const temp = array[a];
+  array[a] = array[b];
+  array[b] = temp;
+}
+
 // /**
 //  * 记忆化斐波那契
 //  * @param {number} n n
@@ -137,3 +144,45 @@ export function fibonacci(n) {
 
 //   return fibonacci;
 // }
+
+/**
+ * 堆排序算法
+ * @param {array} array array
+ * @param {function} compareFn 比较函数
+ * @returns {array} array
+ */
+export function heapSort(array, compareFn = defaultCompare) {
+  let heapSize = array.length;
+  buildMaxHeap(array, compareFn);
+  while (heapSize > 1) {
+    heapSize = heapSize - 1;
+    swap(array, 0, heapSize);
+    heapify(array, 0, heapSize, compareFn);
+  }
+
+  return array;
+}
+
+export function buildMaxHeap(array, compareFn) {
+  for (let i = Math.floor(array.length / 2); i >= 0; i -= 1) {
+    heapify(array, i, array.length, compareFn);
+  }
+
+  return array;
+}
+
+export function heapify(array, index, size, compareFn) {
+  let element = index;
+  const left = 2 * index + 1;
+  const right = 2 * index + 2;
+  if (left < size && compareFn(array[element], array[left]) > Compare.BIGGER_THAN) {
+    element = left;
+  }
+  if (right < size && compareFn(array[element], array[right]) > Compare.BIGGER_THAN) {
+    element = right;
+  }
+  if (index !== element) {
+    swap(array, index, element);
+    heapify(element);
+  }
+}
