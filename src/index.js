@@ -5,7 +5,7 @@ import {BinarySearchTree} from './js/util/tree/binarySearchTree';
 export class Todolist {
   constructor() {
     this.innerText = '';
-
+    console.log(111);
     const tree = new BinarySearchTree();
     tree.insert(11);
     tree.insert(7);
