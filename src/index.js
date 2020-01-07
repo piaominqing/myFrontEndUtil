@@ -1,29 +1,56 @@
 import '../assets/css/common.css';
 import '../assets/css/todolist.css';
-import {BinarySearchTree} from './js/util/tree/binarySearchTree';
+import {makePublisher} from './js/design-pattern/publisher';
 
 export class Todolist {
   constructor() {
     this.innerText = '';
-    console.log(111);
-    const tree = new BinarySearchTree();
-    tree.insert(11);
-    tree.insert(7);
-    tree.insert(15);
-    tree.insert(5);
-    tree.insert(3);
-    tree.insert(9);
-    tree.insert(8);
-    tree.insert(10);
-    tree.insert(13);
-    tree.insert(12);
-    tree.insert(14);
-    tree.insert(20);
-    tree.insert(18);
-    tree.insert(25);
 
-    const printNode = value => console.log(value);
-    tree.inOrderTraverse(printNode);
+    /** test 领域 */
+
+    const paper = {
+      daily() {
+        this.publish('big news today');
+      },
+      monthly() {
+        this.publish('interesting analysis', 'monthly');
+      }
+    };
+
+    makePublisher(paper);
+
+    const joe = {
+      drinkCoffee(_paper) {
+        console.log(`Just read ${_paper}`);
+      },
+      sundayPreNap(monthly) {
+        console.log(`About to fall asleep reading this ${monthly}`);
+      }
+    };
+
+    paper.subscribe(joe.drinkCoffee);
+    paper.subscribe(joe.sundayPreNap, 'monthly');
+
+    paper.daily();
+    paper.daily();
+    paper.daily();
+    paper.monthly();
+
+    makePublisher(joe);
+
+    joe.tweet = function(msg) {
+      this.publish(msg);
+    };
+
+    paper.readTweets = function(tweet) {
+      alert(`Call big meeting! Someone ${tweet}`);
+    };
+
+    joe.subscribe(paper.readTweets);
+
+    joe.tweet('hated the paper today');
+
+    /** test 领域 */
 
     document.querySelector('#todolist').innerText = this.innerText;
   }
